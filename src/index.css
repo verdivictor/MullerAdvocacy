@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Toastify__toast-container {
+  z-index: 9999;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Pure white */
+    --foreground: 0 0% 5%; /* Soft black */
+    --card: 0 0% 98%; /* Slightly off-white */
+    --card-foreground: 0 0% 5%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 5%;
+    --primary: 0 0% 10%; /* Dark gray as primary */
+    --primary-foreground: 0 0% 98%; /* Off-white */
+    --secondary: 46 63% 54%; /* Gold */
+    --secondary-foreground: 0 0% 5%;
+    --muted: 0 0% 96%; /* Very light gray */
+    --muted-foreground: 0 0% 45%; /* Medium gray */
+    --accent: 46 63% 54%; /* Gold */
+    --accent-foreground: 0 0% 5%;
+    --destructive: 0 84% 60%; /* Red */
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 88%; /* Lighter gray */
+    --input: 0 0% 88%;
+    --ring: 46 63% 54%; /* Gold */
+    --radius: 0.75rem;
+
+    /* Brand colors */
+    --brand-blue: 0 0% 10%; /* Dark gray */
+    --brand-gold: 46 63% 54%; /* Gold */
+    --brand-dark: 0 0% 5%; /* Soft black */
+    --brand-white: 0 0% 98%; /* Off-white */
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 10%), hsl(0 0% 15%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 10%), hsl(46 63% 54%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 98%), hsl(0 0% 92%));
+
+    /* Shadows */
+    --shadow-modern: 0 2px 8px -1px hsl(0 0% 0% / 0.08);
+    --shadow-hover: 0 4px 12px -2px hsl(0 0% 0% / 0.12);
+    --shadow-hero: 0 8px 24px -4px hsl(0 0% 0% / 0.15);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 0 0% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 94%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 46 63% 54%;
+  }
+
+  .dark {
+    /* Base colors - Soft black theme */
+    --background: 0 0% 8%; /* Dark gray instead of pure black */
+    --foreground: 0 0% 98%; /* Off-white */
+    --card: 0 0% 12%; /* Slightly lighter than background */
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary becomes off-white */
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 8%;
+
+    /* Secondary remains gold */
+    --secondary: 46 63% 54%;
+    --secondary-foreground: 0 0% 8%;
+
+    /* Muted colors */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    /* Accents */
+    --accent: 46 63% 54%;
+    --accent-foreground: 0 0% 8%;
+
+    /* Destructive */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders and inputs */
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 46 63% 54%;
+
+    /* Brand colors */
+    --brand-blue: 0 0% 98%; /* Off-white */
+    --brand-gold: 46 63% 54%; /* Gold */
+    --brand-dark: 0 0% 98%; /* Off-white */
+    --brand-white: 0 0% 8%; /* Dark gray */
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 12%), hsl(0 0% 18%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 8%), hsl(46 63% 54%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 12%), hsl(0 0% 15%));
+
+    /* Shadows */
+    --shadow-modern: 0 2px 12px -1px hsl(0 0% 100% / 0.08);
+    --shadow-hover: 0 4px 16px -2px hsl(0 0% 100% / 0.12);
+    --shadow-hero: 0 8px 32px -4px hsl(46 63% 54% / 0.2);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 12%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 12%;
+    --sidebar-accent: 0 0% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 46 63% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}

@@ -1,0 +1,79 @@
+name: Build, Push and Deploy a Docker Image
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-push-deploy-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3.3.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Build and push Docker image
+        id: push
+        uses: docker/build-push-action@v6.5.0
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/${{ github.repository }}:latest
+
+            # Frontend build steps
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Use your preferred Node version  
+      - name: Install SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DROPLET_SSH_KEY }}
+          remote_key: ${{ secrets.DROPLET_SSH_KEY }}
+      - name: Execute remote SSH commands using password
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DROPLET_IP }}
+          username: root
+          password: gRufalos123a
+          port: 22
+          script: rm -rf /var/www/brooklyn-sidewalks/html
+      - name: Install frontend dependencies and build
+        run: |
+          npm install
+          npm run build
+          scp -o StrictHostKeyChecking=no -r dist/* ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }}:/var/www/brooklyn-sidewalks/html
+      - name: Deploy to Droplet
+        env:
+          DROPLET_IP: ${{ secrets.DROPLET_IP }}
+          DROPLET_USER: ${{ secrets.DROPLET_USER }}
+          GHCR_IMAGE: ghcr.io/${{ github.repository }}:latest
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.DROPLET_USER }}@${{ secrets.DROPLET_IP }} "
+          docker system prune -f
+          docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+          docker pull $GHCR_IMAGE
+          docker stop personal-brooklyn-sidewalk || true
+          docker rm personal-brooklyn-sidewalk || true
+          docker run -d \
+            --name personal-brooklyn-sidewalk \
+            --restart unless-stopped \
+            -e API_PORT=${{ secrets.API_PORT }} \
+            -e SMTP_HOST=${{ secrets.SMTP_HOST }} \
+            -e SMTP_PORT=${{ secrets.SMTP_PORT }} \
+            -e SMTP_USER=${{ secrets.SMTP_USER }} \
+            -e SMTP_PASS=${{ secrets.SMTP_PASS }} \
+            -e EMAIL_DESTINATION=${{ secrets.EMAIL_DESTINATION }} \
+            -p 4000:4000 \
+            $GHCR_IMAGE
+          "
