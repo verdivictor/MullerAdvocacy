@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Toastify__toast-container {
+  z-index: 9999;
+}
+
+@layer base {
+  :root {
+    /* Base light theme */
+    --background: 0 0% 100%;          /* white */
+    --foreground: 0 0% 5%;           /* soft black */
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 5%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 5%;
+
+    --primary: 0 0% 7%;              /* #111 from Presentation bg */
+    --primary-foreground: 0 0% 98%;  /* off-white text */
+
+    --secondary: 0 84% 60%;          /* strong red (Presentation accents) */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 46 63% 54%;            /* gold accent */
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 46 63% 54%; /* gold ring */
+
+    --radius: 0.75rem;
+
+    /* Brand palette from Presentation */
+    --brand-dark: 0 0% 7%;    /* #111 background */
+    --brand-red: 0 84% 60%;   /* highlight red */
+    --brand-gold: 46 63% 54%; /* highlight gold */
+    --brand-white: 0 0% 98%;  /* text white */
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 0 84% 60%;
+    --secondary-foreground: 0 0% 8%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 46 63% 54%;
+    --accent-foreground: 0 0% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 46 63% 54%;
+
+    --brand-dark: 0 0% 98%;
+    --brand-red: 0 84% 60%;
+    --brand-gold: 46 63% 54%;
+    --brand-white: 0 0% 8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+
+
+-------------
+
+
+
+import { ShieldCheck, CheckCircle2 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
+export const Presentation = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
+  const highlights = [
+    {
+      icon: ShieldCheck,
+      text: "Ser referência em um novo conceito de Proteção Patrimonial, desenvolvido pela Muller Advocacy, oferecendo soluções completas para prevenção de riscos e proteção de bens, ideal para empresários que desejam preservar o legado construído.",
+    },
+    {
+      icon: CheckCircle2,
+      text: "Atuar na prevenção de riscos com soluções jurídicas modernas e eficazes, garantindo a segurança e a estabilidade das estruturas empresariais.",
+    },
+    {
+      icon: CheckCircle2,
+      text: "Elaborar contratos e planejamentos estratégicos que potencializam resultados e reduzem riscos, adaptando-se às necessidades específicas de cada cliente.",
+    },
+    {
+      icon: CheckCircle2,
+      text: "Oferecer suporte próximo e personalizado para empresas e empresários em qualquer tipo de demanda, com uma equipe preparada para enfrentar os desafios mais complexos.",
+    },
+  ];
+
+  return (
+    <section
+      id="about"
+      className="py-20 bg-[#111] text-white relative overflow-hidden"
+    >
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Coluna Esquerda */}
+          <div
+            ref={ref as any}
+            className={`transition-all duration-700 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+              Sobre o <span className="text-red-600">escritório.</span>
+            </h2>
+            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+              Com tecnologia de ponta e uma equipe altamente especializada,
+              a Muller Advocacy oferece atendimentos online e presenciais
+              em cidades estratégicas, assessorando clientes em todo o Brasil.
+            </p>
+            <p className="text-md font-semibold text-gray-400 mb-8">
+              Localização:{" "}
+              <span className="text-secondary">Brasília - DF</span> ou{" "}
+              <span className="text-secondary">Online</span>
+            </p>
+            <img
+              src="/lovable-uploads/pexels-ekaterina-bolovtsova-6077091.jpg"
+              alt="Equipe Muller Advocacy"
+              className="rounded-lg shadow-lg border border-white/10"
+            />
+          </div>
+
+          {/* Coluna Direita */}
+          <div
+            className={`space-y-6 transition-all duration-700 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            <h3 className="text-2xl font-semibold mb-6 border-l-4 border-red-600 pl-4">
+              Nosso escritório se destaca por:
+            </h3>
+            <div className="space-y-6">
+              {highlights.map((item, i) => (
+                <div
+                  key={i}
+                  className="group flex items-start gap-4 p-6 border border-white/10 rounded-xl hover:bg-white/5 transition-colors"
+                >
+                  <div className="flex-shrink-0">
+                    <item.icon className="w-8 h-8 text-red-600 transition-colors duration-300 group-hover:text-secondary" />
+                  </div>
+                  <p className="text-gray-300 leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

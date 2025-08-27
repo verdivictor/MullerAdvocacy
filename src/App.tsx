@@ -4,8 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
+import Aposentadoria from "./pages/Aposentadoria";
+import Inventario from "./pages/Inventario";
 import NotFound from "./pages/NotFound";
-import WhoWeAre from "./pages/WhoWeAre";
 
 const App = () => (
   <>
@@ -15,9 +16,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          {/*<Route path="/who-we-are" element={<WhoWeAre />} />*/}
+          <Route path="/contato" element={<Contact />} />
+          <Route path="/aposentadoria" element={<Aposentadoria />} />
+          <Route path="/inventario" element={<Inventario />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

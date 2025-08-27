@@ -119,7 +119,7 @@ const WhoWeAre = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="/contact#contact-form" 
+              href="/contato#contact-form" 
               className="inline-flex items-center justify-center px-8 py-4 bg-background text-foreground rounded-xl font-semibold hover:bg-background/90 transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
               Get Your Free Estimate

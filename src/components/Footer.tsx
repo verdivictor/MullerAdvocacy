@@ -11,13 +11,13 @@ export const Footer = () => {
           <div className="space-y-6">
             <div>
               <img 
-                src="/lovable-uploads/fasfasf.png" 
-                alt="Brooklyn Sidewalks" 
-                className="h-12 w-auto group-hover:scale-110 transition-all duration-300 border border-none rounded-[10%] p-[0.5px] bg-[#093056]"
+                src="/lovable-uploads/Muller_Adv_borderless.png" 
+                alt="Muller Advocacy" 
+                className="h-12 w-auto group-hover:scale-110 transition-all duration-300 border border-none rounded-[10%]"
               />
               <p className="text-muted-foreground leading-relaxed">
-                NYC sidewalk repair specialists with 30+ years of DOT-compliant experience.
-                We engineer durable, code-compliant walkways with precision craftsmanship for properties demanding the highest standards.
+                OAB-DF XX/XXX
+                OAB-RJ XX/XXX  
               </p>
             </div>
 
@@ -98,8 +98,8 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
-                  Free Quote
+                <a href="/contato" className="text-muted-foreground hover:text-primary transition-colors">
+                  Fale Conosco
                 </a>
               </li>
               {/*<li>
@@ -117,8 +117,8 @@ export const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
             <div className="mb-2 md:mb-0 text-center md:text-left">
-              <p>© 2025 Brooklyn Sidewalks. All Rights Reserved.</p>
-              <p>Licensed GC – NYC</p>
+              <p>© 2025 Muller Advocacy. Todos os direitos reservados.</p>
+              <p>OAB/DF 84.987</p>
             </div>
             {/*<div className="flex items-center space-x-1">
               <span>Desenvolvido por</span>

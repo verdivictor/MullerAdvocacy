@@ -31,27 +31,27 @@ export const ModernHero = () => {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const validate = (): FormErrors => {
-    const newErrors: FormErrors = {};
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required.";
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
-      newErrors.email = "An e-mail is required.";
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = "E-mail format is invalid.";
-    }
-    const phoneDigits = formData.phone.replace(/\D/g, "");
-    if (!phoneDigits) {
-      newErrors.phone = "A telephone number is required.";
-    } else if (phoneDigits.length < 8) {
-      newErrors.phone = "Telephone is too short.";
-    }
-    if (!formData.details.trim()) {
-      newErrors.details = "Project details are required";
-    }
-    return newErrors;
-  };
+      const newErrors: FormErrors = {};
+      if (!formData.name.trim()) {
+        newErrors.name = "Nome é obrigatório.";
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!formData.email.trim()) {
+        newErrors.email = "E-mail é obrigatório.";
+      } else if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Formato de e-mail inválido.";
+      }
+      const phoneDigits = formData.phone.replace(/\D/g, "");
+      if (!phoneDigits) {
+        newErrors.phone = "Telefone é obrigatório.";
+      } else if (phoneDigits.length < 8) {
+        newErrors.phone = "Telefone muito curto.";
+      }
+      if (!formData.details.trim()) {
+        newErrors.details = "Uma mensagem é obrigatória";
+      }
+      return newErrors;
+    };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -131,7 +131,7 @@ export const ModernHero = () => {
                   </span><br />
                 </div>
                 <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  <span className="text-accent mb-2">Raphael Muller</span><br />
+                  <span className="text-accent mb-2">Rafael Müller</span><br />
                 </h1>
                 <span className="text-white text-3xl lg:text-2xl font-light">
                   Advocacia com confiança, prestatividade e diligência.
@@ -151,7 +151,7 @@ export const ModernHero = () => {
               <form onSubmit={handleSubmit} className="space-y-4 h-full overflow-auto">
                 <div>
                   <Input
-                    placeholder="Name"
+                    placeholder="Seu nome"
                     value={formData.name}
                     onChange={e => handleChange('name', e.target.value)}
                     className="bg-background border-none text-foreground"
@@ -162,7 +162,7 @@ export const ModernHero = () => {
                 <div>
                   <Input
                     type="email"
-                    placeholder="E-mail"
+                    placeholder="Seu email"
                     value={formData.email}
                     onChange={e => handleChange('email', e.target.value)}
                     className="bg-background border-none text-foreground"
@@ -173,7 +173,7 @@ export const ModernHero = () => {
                 <div>
                   <Input
                     type="tel"
-                    placeholder="Telephone"
+                    placeholder="Seu telefone"
                     value={formData.phone}
                     onChange={e => handleChange('phone', e.target.value)}
                     className="bg-background border-none text-foreground"
@@ -183,7 +183,7 @@ export const ModernHero = () => {
 
                 <div>
                   <Textarea
-                    placeholder="Project Details"
+                    placeholder="Adicione uma mensagem"
                     value={formData.details}
                     onChange={e => handleChange('details', e.target.value)}
                     className="bg-background border-none text-foreground min-h-[100px]"
@@ -193,7 +193,7 @@ export const ModernHero = () => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3"
+                  className="w-full bg-primary hover:bg-primary hove:scale-110 text-primary-foreground font-semibold py-3"
                 >
                   FALE COM NOSSOS ADVOGADOS HOJE
                 </Button>
